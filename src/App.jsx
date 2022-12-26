@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import TodoListItem from "./TodoListItem";
 
 const App = () => {
-  const [item, setItem] = useState(" ");
+  const [item, setItem] = useState("");
   const [itemArr, setItemArr] = useState([]);
 
   const itemEvent = (e) => {
@@ -12,7 +13,8 @@ const App = () => {
   const itemAdded = () => {
     setItemArr((oldValue) => {
       return [...oldValue, item];
-    })
+    });
+    setItem(' ');
   };
   return (
     <>
@@ -28,7 +30,7 @@ const App = () => {
             {/* <li>{item}</li> */}
 
             {itemArr.map((itemValue) => {
-              return <li>{itemValue}</li>;
+             return <TodoListItem itemValue = {itemValue}/>
             })}
           </ol>
         </div>
