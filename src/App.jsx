@@ -14,7 +14,16 @@ const App = () => {
     setItemArr((oldValue) => {
       return [...oldValue, item];
     });
-    setItem(' ');
+    setItem(" ");
+  };
+
+  const deleteItems = (id ) => {
+    console.log("deleted");
+    setItemArr((oldItems) => {
+      return oldItems.filter((arrEle, index) => {
+        return index  != id;
+      })
+    })
   };
   return (
     <>
@@ -29,8 +38,15 @@ const App = () => {
           <ol>
             {/* <li>{item}</li> */}
 
-            {itemArr.map((itemValue) => {
-             return <TodoListItem itemValue = {itemValue}/>
+            {itemArr.map((itemValue, index) => {
+              return (
+                <TodoListItem
+                  itemValue={itemValue}
+                  id={index}
+                  key={index}
+                  onSelect={deleteItems}
+                />
+              );
             })}
           </ol>
         </div>
